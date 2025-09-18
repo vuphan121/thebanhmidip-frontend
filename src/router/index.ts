@@ -5,8 +5,9 @@ import ArticlePage from '@/view/ArticlePage.vue'
 
 const routes = [
     { path: '/', name: 'Home', component: Home },
-    // { path: '/register', name: 'Register', component: RegisterPage },
-    { path: '/article/issue/:id', name: 'Article', component: ArticlePage }
+    { path: '/article/issue/:id', name: 'Article', component: ArticlePage },
+    {path: '/subscribed', component: () => import('@/view/Subscribed.vue')
+    }
 ]
 
 export default createRouter({ history: createWebHistory(), routes })
