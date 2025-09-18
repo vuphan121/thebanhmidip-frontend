@@ -6,13 +6,18 @@
     </div>
     <div class="navbar-right">
       <button class="subscribe-btn">Subscribe</button>
-      <div class="menu-icon">☰</div>
+      <button class="login-link" @click="showLogin = true">Log In</button>
     </div>
   </header>
+  <LoginModal v-if="showLogin" @close="showLogin = false" />
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import LoginModal from '@/components/LoginModal.vue'
+
 const logoUrl = `${import.meta.env.VITE_BACKEND_API_URL}/article-image/banhmipic.jpg`
+const showLogin = ref(false)
 </script>
 
 <style scoped>
@@ -45,6 +50,7 @@ const logoUrl = `${import.meta.env.VITE_BACKEND_API_URL}/article-image/banhmipic
 .navbar-right {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 .subscribe-btn {
   background-color: #F7C3A1;
@@ -54,11 +60,13 @@ const logoUrl = `${import.meta.env.VITE_BACKEND_API_URL}/article-image/banhmipic
   padding: 6px 12px;
   font-weight: bold;
   cursor: pointer;
-  margin-right: 12px;
 }
-.menu-icon {
-  font-size: 1.5rem;
-  color: #F9E4BC;
+.login-link {
+  background: none;
+  border: none;
+  color: #fff;
+  text-decoration: underline;
+  font-weight: bold;
   cursor: pointer;
 }
 </style>
