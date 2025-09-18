@@ -1,6 +1,11 @@
 <template>
   <div class="article-card" @click="$emit('click', article)">
     <img v-if="article.image" :src="article.image" alt="Article Image" />
+
+    <div class="article-date" v-if="article.created_at">
+      {{ formatDate(article.created_at) }}
+    </div>
+
     <h3>
       <a
           v-if="showLink && article.title_link"
@@ -12,6 +17,7 @@
       </a>
       <span v-else>{{ article.title }}</span>
     </h3>
+
     <p>{{ article.summary }}</p>
   </div>
 </template>
@@ -22,9 +28,20 @@ export default {
   props: {
     article: { type: Object, required: true },
     showLink: { type: Boolean, default: false }
+  },
+  methods: {
+    formatDate(dateString: string): string {
+      const options: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }
+      return new Date(dateString).toLocaleDateString(undefined, options)
+    }
   }
 }
 </script>
+
 <style scoped>
 .article-card {
   background-color: #fff7ef;
@@ -50,8 +67,15 @@ export default {
   border-bottom: 1px solid #f0e6d2;
 }
 
+.article-date {
+  margin: 10px 12px 0;
+  color: #7a5b3e;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
 .article-card h3 {
-  margin: 12px;
+  margin: 6px 12px;
   color: #4b2e1e;
   font-size: 1.1rem;
   font-weight: 700;
