@@ -3,7 +3,7 @@
     <img class="hero-logo" :src="heroLogoUrl" alt="Logo" />
     <h1 class="hero-title">The Banh Mi Dip</h1>
     <p class="hero-subtext">
-     Get your daily 5-minute flavor bomb of Vietnam’s freshest news and insights!
+      Get your daily 5-minute flavor bomb of Vietnam’s freshest news and insights!
     </p>
     <div class="hero-form">
       <input type="email" placeholder="Enter your email" />
@@ -39,9 +39,11 @@ const heroLogoUrl = `${import.meta.env.VITE_BACKEND_API_URL}/article-image/banhm
   font-size: 1.2rem;
   color: #3a2c1f;
   margin-bottom: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  white-space: nowrap;              
+  overflow: hidden;                 
+  text-overflow: ellipsis;         
+  max-width: 100%;                 
+  padding: 0 20px;                  
 }
 .hero-form {
   display: flex;
