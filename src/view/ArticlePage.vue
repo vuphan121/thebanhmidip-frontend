@@ -13,7 +13,14 @@
           </a>
           <span v-else>{{ mainArticle.title }}</span>
         </h1>
-        <p class="main-summary">{{ mainArticle.summary }}</p>
+        <div class="main-summary-box">
+          <p class="main-summary unified-article-text">
+            Banh Mi Dip Finance, Tech, AI: Grab your bánh mì thập cẩm and power up - free cà phê sữa today!
+          </p>
+          <p class="main-intro unified-article-text">
+            {{ issueIntro }}
+          </p>
+        </div>
       </div>
 
       <div v-for="article in otherArticles" :key="article.id" class="article-box">
@@ -65,6 +72,7 @@ export default defineComponent({
     const API_BASE_URL = import.meta.env.VITE_BACKEND_API_URL
     const mainArticle = ref<any>(null)
     const otherArticles = ref<any[]>([])
+    const issueIntro = ref<string>('')
 
     const formatDate = (dateStr: string): string => {
       const date = new Date(dateStr)
@@ -89,13 +97,14 @@ export default defineComponent({
         }))
 
         mainArticle.value = updated.find(a => a.id === clickedId)
-        otherArticles.value = updated
+        otherArticles.value = updated.filter(a => a.id !== clickedId)
+        issueIntro.value = data.intro || ''
       } catch (err) {
         console.error('Failed to fetch issue articles:', err)
       }
     })
 
-    return { mainArticle, otherArticles, formatDate }
+    return { mainArticle, otherArticles, issueIntro, formatDate }
   }
 })
 </script>
@@ -125,11 +134,21 @@ export default defineComponent({
   color: #1a1a1a;
   margin-bottom: 10px;
 }
-.main-summary {
-  font-size: 1.3rem;
-  color: #333;
-  line-height: 1.6;
+.main-summary-box {
+  background-color: #f7c3a1;
+  border: 2px solid #000;
+  border-radius: 16px;
+  padding: 20px 30px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto 30px;
+}
+.unified-article-text {
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  line-height: 1.8;
   white-space: pre-wrap;
+  margin-bottom: 10px;
 }
 .article-box {
   background-color: #f7c3a1;
