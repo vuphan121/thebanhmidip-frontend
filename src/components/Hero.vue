@@ -1,73 +1,111 @@
 <template>
-  <section class="hero">
-    <img class="hero-logo" :src="heroLogoUrl" alt="Logo" />
-    <h1 class="hero-title">The Banh Mi Dip</h1>
-    <p class="hero-subtext">
-      Get your daily 5-minute flavor bomb of Vietnam’s freshest news and insights!
-    </p>
-    <div class="hero-form">
-      <input type="email" placeholder="Enter your email" />
-      <button>Subscribe</button>
+  <header class="navbar">
+    <div class="navbar-left">
+      <img class="logo" :src="logoUrl" alt="Logo" />
+      <span class="brand-name">The Banh Mi Dip</span>
     </div>
-  </section>
+
+    <div class="navbar-right">
+      <div class="social-links">
+        <a
+            href="https://www.facebook.com/TheBanhMiDip"
+            target="_blank"
+            aria-label="Facebook"
+            rel="noopener noreferrer"
+        >
+          <i class="fab fa-facebook fa-lg"></i>
+        </a>
+        <a
+            href="https://www.instagram.com/thebanhmidip/"
+            target="_blank"
+            aria-label="Instagram"
+            rel="noopener noreferrer"
+        >
+          <i class="fab fa-instagram fa-lg"></i>
+        </a>
+        <a
+            href="https://www.reddit.com/user/thebanhmidip/"
+            target="_blank"
+            aria-label="Reddit"
+            rel="noopener noreferrer"
+        >
+          <i class="fab fa-reddit fa-lg"></i>
+        </a>
+      </div>
+
+      <button class="subscribe-btn" @click="showSubscribe = true">Subscribe</button>
+    </div>
+  </header>
+
+  <SubscribeModal :show="showSubscribe" @close="showSubscribe = false" />
 </template>
 
 <script setup lang="ts">
-const heroLogoUrl = `${import.meta.env.VITE_BACKEND_API_URL}/article-image/banhmipic.jpg`
+import { ref } from 'vue'
+import SubscribeModal from '@/components/SubscribeModal.vue'
+
+const logoUrl = `${import.meta.env.VITE_BACKEND_API_URL}/article-image/banhmipic.jpg`
+const showSubscribe = ref(false)
 </script>
 
 <style scoped>
-.hero {
-  text-align: center;
-  background-color: #F7C3A1;
-  padding: 60px 20px 40px;
-}
-.hero-logo {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 20px;
-}
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
-  color: #4B2E1E;
-  margin-bottom: 10px;
-}
-.hero-subtext {
-  font-size: 1.2rem;
-  color: #3a2c1f;
-  margin-bottom: 30px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;         
-  max-width: 100%;
-  padding: 0 20px;
-}
-.hero-form {
+.navbar {
+  background-color: #5E8C61;
+  color: #fff;
   display: flex;
-  justify-content: center;
-  max-width: 500px;
-  margin: 0 auto;
-  border: 2px solid #4B2E1E;
-  border-radius: 10px;
-  overflow: hidden;
-}
-.hero-form input[type="email"] {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  font-size: 1rem;
-  outline: none;
-}
-.hero-form button {
-  background-color: #4B2E1E;
-  color: white;
+  justify-content: space-between;
+  align-items: center;
   padding: 12px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #F9E4BC;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-links a {
+  color: #fff;
+  transition: color 0.2s;
+}
+
+.social-links a:hover {
+  color: #FFD700;
+}
+
+.subscribe-btn {
+  background-color: #F7C3A1;
+  color: #4B2E1E;
   border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
   font-weight: bold;
   cursor: pointer;
-  font-size: 1rem;
 }
 </style>
