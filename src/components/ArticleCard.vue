@@ -1,7 +1,17 @@
 <template>
   <div class="article-card" @click="$emit('click', article)">
     <img v-if="article.image" :src="article.image" alt="Article Image" />
-    <h3>{{ article.title }}</h3>
+    <h3>
+      <a
+          v-if="showLink && article.title_link"
+          :href="article.title_link"
+          target="_blank"
+          rel="noopener noreferrer"
+      >
+        {{ article.title }}
+      </a>
+      <span v-else>{{ article.title }}</span>
+    </h3>
     <p>{{ article.summary }}</p>
   </div>
 </template>
@@ -10,14 +20,14 @@
 export default {
   name: 'ArticleCard',
   props: {
-    article: { type: Object, required: true }
+    article: { type: Object, required: true },
+    showLink: { type: Boolean, default: false }
   }
 }
 </script>
-
 <style scoped>
 .article-card {
-  background-color: #fff7ef; 
+  background-color: #fff7ef;
   border: 2px solid #1a1a1a;
   border-radius: 16px;
   overflow: hidden;
