@@ -30,7 +30,7 @@ export default defineComponent({
 
     const handleClick = (article: any) => {
       if (article?.id) {
-        router.push(`/article/${article.id}`)
+        router.push(`/article/issue/${article.id}`)
       }
     }
 
