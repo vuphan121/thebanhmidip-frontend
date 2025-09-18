@@ -33,13 +33,19 @@
         </a>
       </div>
 
-      <button class="subscribe-btn">Subscribe</button>
+      <button class="subscribe-btn" @click="showSubscribe = true">Subscribe</button>
     </div>
   </header>
+
+  <SubscribeModal :show="showSubscribe" @close="showSubscribe = false" />
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import SubscribeModal from '@/components/SubscribeModal.vue'
+
 const logoUrl = `${import.meta.env.VITE_BACKEND_API_URL}/article-image/banhmipic.jpg`
+const showSubscribe = ref(false)
 </script>
 
 <style scoped>
