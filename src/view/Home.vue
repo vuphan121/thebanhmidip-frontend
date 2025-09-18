@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
-import {useRouter} from "vue-router";
+import { useRouter } from 'vue-router'
 import Navbar from '@/components/Navbar.vue'
 import Hero from '@/components/Hero.vue'
 import ArticleGrid from '@/components/ArticleGrid.vue'
@@ -29,8 +29,9 @@ export default defineComponent({
     const API_BASE_URL = import.meta.env.VITE_BACKEND_API_URL
 
     const handleClick = (article: any) => {
-
-      router.push(`/article/${article.id}`)
+      if (article?.id) {
+        router.push(`/article/${article.id}`)
+      }
     }
 
     onMounted(async () => {
@@ -39,10 +40,7 @@ export default defineComponent({
         const data = await res.json()
 
         const updatedArticles = data.map((article: any) => ({
-          id: article.id,
-          title: article.title,
-          summary: article.summary,
-          content: article.content,
+          ...article,
           image: `${API_BASE_URL}/article-image/${article.image_name}`
         }))
 
