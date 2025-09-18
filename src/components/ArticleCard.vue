@@ -18,7 +18,7 @@ export default {
 <style scoped>
 .article-card {
   background-color: #fff7ef; 
-  border: 2px solid #1a1a1a; 
+  border: 2px solid #1a1a1a;
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;

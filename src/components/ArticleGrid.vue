@@ -5,7 +5,7 @@
           v-for="article in articles"
           :key="article.id"
           :article="article"
-          @click="$emit('clickArticle', $event)"
+          @click="$emit('clickArticle', article)"
       />
     </div>
   </div>
