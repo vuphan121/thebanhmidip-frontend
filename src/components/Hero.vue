@@ -39,11 +39,11 @@ const heroLogoUrl = `${import.meta.env.VITE_BACKEND_API_URL}/article-image/banhm
   font-size: 1.2rem;
   color: #3a2c1f;
   margin-bottom: 30px;
-  white-space: nowrap;              
-  overflow: hidden;                 
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;         
-  max-width: 100%;                 
-  padding: 0 20px;                  
+  max-width: 100%;
+  padding: 0 20px;
 }
 .hero-form {
   display: flex;
