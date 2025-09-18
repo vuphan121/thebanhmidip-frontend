@@ -17,8 +17,8 @@ export default {
 
 <style scoped>
 .article-card {
-  background-color: #fff7ef; /* Slightly creamy white for warmth */
-  border: 2px solid #1a1a1a; /* dark black-ish border */
+  background-color: #fff7ef; 
+  border: 2px solid #1a1a1a; 
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
