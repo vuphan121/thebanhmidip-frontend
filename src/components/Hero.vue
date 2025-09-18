@@ -3,7 +3,7 @@
     <img class="hero-logo" :src="heroLogoUrl" alt="Logo" />
     <h1 class="hero-title">The Banh Mi Dip</h1>
     <p class="hero-subtext">
-      Get your daily 5-minute dose of Vietnam’s freshest tech, finance, and policy news – straight from the oven!
+     Get your daily 5-minute flavor bomb of Vietnam’s freshest news and insights!
     </p>
     <div class="hero-form">
       <input type="email" placeholder="Enter your email" />
